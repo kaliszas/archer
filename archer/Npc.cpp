@@ -12,6 +12,7 @@ Npc::Npc(bool czySoj, bool czyWielki): czySojusznik(czySoj), czyGigant(czyWielki
     else
         animacje.wybierzWielkoscKlatek(1);
     nazwaTekstury();
+    animacje.ustawCzasTrwania(ATAK, 0.2);
 }
 
 Npc::~Npc()

@@ -17,8 +17,10 @@ class Mechanika_gry
         void sterowanie();
         void zabij();
         void resetGracza(sf::RenderWindow &win);
-        void obslugujNacisniecia(sf::Event &eve);
-        void obslugujZwolnienia(sf::Event &eve);
+        void obslugujNacisnieciaPrzycisk(sf::Event &eve);
+        void obslugujNacisnieciaMysz(sf::Event &eve);
+        void obslugujZwolnieniaPrzycisk(sf::Event &eve);
+        void obslugujZwolnieniaMysz(sf::Event &eve);
         void rysuj(sf::RenderWindow &win);
         bool czyWygrana();
         bool czyPrzegrana();

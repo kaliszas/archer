@@ -28,7 +28,7 @@ void Mechanika_gry::zadajObrazenia(Gracz &kto, Gracz &komu)
 	komu.zran(kto.sprawdzObrazenia());
 }
 
-void Mechanika_gry::obslugujNacisniecia(sf::Event &eve)
+void Mechanika_gry::obslugujNacisnieciaPrzycisk(sf::Event &eve)
 {
 	if(eve.key.code == sf::Keyboard::A || eve.key.code == sf::Keyboard::Left)
 		idzLewo=1;
@@ -36,12 +36,27 @@ void Mechanika_gry::obslugujNacisniecia(sf::Event &eve)
 		idzPrawo=1;
 }
 
-void Mechanika_gry::obslugujZwolnienia(sf::Event &eve)
+void Mechanika_gry::obslugujNacisnieciaMysz(sf::Event &eve)
+{
+	if(eve.mouseButton.button == sf::Mouse::Right)
+		naciagajStrzale=1;
+}
+
+void Mechanika_gry::obslugujZwolnieniaPrzycisk(sf::Event &eve)
 {
 	if(eve.key.code == sf::Keyboard::A || eve.key.code == sf::Keyboard::Left)
 		idzLewo=0;
 	if(eve.key.code == sf::Keyboard::D || eve.key.code == sf::Keyboard::Right)
 		idzPrawo=0;
+}
+
+void Mechanika_gry::obslugujZwolnieniaMysz(sf::Event &eve)
+{
+	if(eve.mouseButton.button == sf::Mouse::Right)
+	{
+		naciagajStrzale=0;
+		wypuscStrzale=1;
+	}
 }
 
 void Mechanika_gry::rysuj(sf::RenderWindow &win)
@@ -52,7 +67,16 @@ void Mechanika_gry::rysuj(sf::RenderWindow &win)
 
 void Mechanika_gry::sterowanie()
 {
-    if(idzPrawo)
+	if(wypuscStrzale)
+	{
+		wypuscStrzale=0;
+
+	}
+	if(naciagajStrzale)
+	{
+
+	}
+	else if(idzPrawo)
         gracz.ruch(0);
     else if(idzLewo)
         gracz.ruch(1);

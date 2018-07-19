@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Npc.h"
+#include "Gracz.h"
 
 class Komputer
 {

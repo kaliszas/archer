@@ -65,21 +65,26 @@ void Gra::Wyswietlaj(sf::RenderWindow &win)
 
 void Gra::obslugaZdarzen(sf::RenderWindow &win, sf::Event &event)
 {
+	if(event.type == sf::Event::MouseButtonPressed)
+	{
+		silnik.obslugujNacisnieciaMysz(event);
+	}
     if(event.type == sf::Event::MouseButtonReleased)
     {
         //if(event.mouseButton.button == sf::Mouse::Right)
             silnik.spawn(win);
+		silnik.obslugujZwolnieniaMysz(event);
     }
     if(event.type == sf::Event::KeyPressed)
 	{
         if(event.key.code == sf::Keyboard::Escape)
-            pauza=!pauza;
+            pauza= !pauza;
         else
-        	silnik.obslugujNacisniecia(event);
+        	silnik.obslugujNacisnieciaPrzycisk(event);
 	}
     if(event.type == sf::Event::KeyReleased)
     {
-    	silnik.obslugujZwolnienia(event);
+    	silnik.obslugujZwolnieniaPrzycisk(event);
     }
 }
 
@@ -122,7 +127,7 @@ void Gra::parametryZdrowia()
 void Gra::parametryNapisow(sf::RenderWindow &win)
 {
 	napis.setFont(font);
-	napis.setColor(sf::Color::Black);
+	napis.setFillColor(sf::Color::Black);
 	napis.setCharacterSize(30);
 	napis.setOrigin(napis.getGlobalBounds().width/2, napis.getGlobalBounds().height/2);
 	napis.setPosition(win.getSize().x/2, win.getSize().y);

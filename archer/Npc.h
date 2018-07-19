@@ -1,9 +1,9 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "Gracz.h"
+#include "Postac.h"
 
-class Npc: public Gracz
+class Npc: public Postac
 {
     public:
         Npc(bool czySoj, bool czyWielki);
